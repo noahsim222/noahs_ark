@@ -1,28 +1,4 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-
-/**
- * copyright 2022 @codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
-
 :root {
-
-  /**
-   * colors
-   */
-
-  /* gradient */
-
   --bg-gradient-onyx: linear-gradient(
     to bottom right, 
     hsl(240, 1%, 25%) 3%, 
@@ -53,9 +29,7 @@
     hsl(45, 100%, 72%), 
     hsl(35, 100%, 68%)
   );
-
   /* solid */
-
   --jet: hsl(0, 0%, 22%);
   --onyx: hsl(240, 1%, 17%);
   --eerie-black-1: hsl(240, 2%, 13%);
@@ -68,14 +42,8 @@
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
-
-  /**
-   * typography
-   */
-
   /* font-family */
   --ff-poppins: 'Poppins', sans-serif;
-
   /* font-size */
   --fs-1: 24px;
   --fs-2: 18px;
@@ -91,20 +59,12 @@
   --fw-400: 400;
   --fw-500: 500;
   --fw-600: 600;
-
-  /**
-   * shadow
-   */
   
   --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
   --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
   --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
   --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
   --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
-
-  /**
-   * transition
-   */
 
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
@@ -331,9 +291,15 @@ main {
   gap: 15px;
 }
 
-.avatar-box {
+/* .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
+} */
+
+.thumbnail-image {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
 }
 
 .info-content .name {
@@ -830,6 +796,16 @@ main {
 }
 
 
+.timeline-item-edu::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -30px;
+  width: 1px;
+  height: calc(26px);
+  background: var(--jet);
+}
+
 /**
  * skills 
  */
@@ -1221,14 +1197,52 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
+/* .toast {
+  visibility: show;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  transform: translate(0, calc(-100% - 5px));
+  font-size: 17px;
+  transition: visibility 0s, opacity 0.5s linear;
+  opacity: 1;
+} */
 
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  /* width: 250px; */
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  z-index: 10;
+  right: 10px;
+  top: 10px;
+  font-size: 17px;
+  transition: visibility 0s, opacity 0.5s linear;
+  opacity: 0;
+  position:absolute;
+  transform: translate(0, 0);
+}
 
-
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
 
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
-
 /**
  * responsive larger than 450px screen
  */
@@ -1249,7 +1263,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .project-img,
   .blog-banner-box { height: auto; }
-
+  .toast {
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    transform: translate(0, 0);
+    min-width: 250px;
+  }
 }
 
 
@@ -1491,6 +1511,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-list { margin-left: 65px; }
 
   .timeline-item:not(:last-child)::before { left: -40px; }
+  .timeline-item-edu::before { left: -40px; }
 
   .timeline-item::after {
     height: 8px;
@@ -1538,8 +1559,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .form-btn ion-icon { font-size: 18px; }
-
+  .toast {
+    top: 20px;
+    right: 20px;
+  }
 }
+
 
 
 
@@ -1753,7 +1778,11 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .blog-banner-box { height: 230px; }
-
+  .toast {
+    position: fixed;
+    right: 30;
+    top: 20;
+  }
 }
 
 
@@ -1878,5 +1907,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
-
+  .main-content {
+    position: relative;
+  }
+  .toast {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(0, calc(-100%));
+  }
 }
